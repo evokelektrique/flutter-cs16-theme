@@ -1,68 +1,71 @@
 import 'package:flutter/material.dart';
 
-/// A customizable button widget inspired by Counter-Strike 1.6.
+/// A Counter-Strike 1.6 inspired button with a pixelated retro look.
 ///
-/// The [CS16Button] allows configuration for text, font size, padding, colors,
-/// and border thickness while preserving the retro-inspired style.
+/// The button supports:
+/// - Dynamic color changes when pressed.
+/// - Customizable fonts, sizes, and borders.
+/// - A low-resolution aesthetic matching CS16's UI design.
 ///
-/// ## Example:
+/// Example usage:
 /// ```dart
 /// CS16Button(
 ///   text: "Start Game",
-///   fontSize: 14,
 ///   onPressed: () {
 ///     print("Game started!");
 ///   },
 /// );
 /// ```
 class CS16Button extends StatefulWidget {
-  final String fontFamily;
-
+  /// The text displayed inside the button.
   final String text;
 
-  /// The font size of the button text.
+  /// Font size of the button text.
   final double fontSize;
 
-  /// The color of the button background.
+  /// Font family used for the text.
+  final String fontFamily;
+
+  /// Background color when the button is not pressed.
   final Color backgroundColor;
 
-  /// The color of the button background when pressed.
+  /// Background color when the button is pressed.
   final Color pressedBackgroundColor;
 
-  /// The color of the button text.
+  /// Text color when the button is not pressed.
   final Color textColor;
 
-  /// The color of the button text when pressed.
+  /// Text color when the button is pressed.
   final Color pressedTextColor;
 
-  /// The border color of the button.
+  /// Border color of the button.
   final Color borderColor;
 
-  /// The border width of the button.
+  /// Border width of the button.
   final double borderWidth;
 
-  /// The padding inside the button.
+  /// Padding inside the button.
   final EdgeInsets padding;
 
-  /// The callback function triggered when the button is pressed.
+  /// Function to execute when the button is pressed.
   final VoidCallback onPressed;
 
-  /// Creates a CS16-themed button.
+  /// Creates a CS16-themed button with customizable properties.
   const CS16Button({
     super.key,
     required this.text,
     required this.onPressed,
     this.fontSize = 12.0,
-    this.backgroundColor = const Color(0xFF4A5942), // Default green background
+    this.fontFamily = "ArialPixel", // Retro font style
+    this.backgroundColor = const Color(0xFF4A5942), // Green default background
     this.pressedBackgroundColor =
         const Color(0xFF4A5942), // Darker green when pressed
-    this.textColor = const Color(0xFFDEDFD6), // Default text color
+    this.textColor = const Color(0xFFDEDFD6), // Light grey text
     this.pressedTextColor =
         const Color(0xFF958831), // Yellowish text when pressed
     this.borderColor = const Color(0xFF8C9284), // Default border color
     this.borderWidth = 1.0,
     this.padding = const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
-    this.fontFamily = "ArialPixel",
   });
 
   @override
@@ -70,22 +73,26 @@ class CS16Button extends StatefulWidget {
 }
 
 class _CS16ButtonState extends State<CS16Button> {
+  /// Tracks whether the button is currently pressed.
   bool _isPressed = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      // Detect when the button is pressed down
       onTapDown: (_) {
         setState(() {
           _isPressed = true;
         });
       },
+      // Detect when the button is released
       onTapUp: (_) {
         setState(() {
           _isPressed = false;
         });
         widget.onPressed();
       },
+      // Handle if the tap is canceled (finger slides away)
       onTapCancel: () {
         setState(() {
           _isPressed = false;
@@ -95,37 +102,35 @@ class _CS16ButtonState extends State<CS16Button> {
         decoration: BoxDecoration(
           color: _isPressed
               ? widget.pressedBackgroundColor
-              : widget.backgroundColor,
+              : widget.backgroundColor, // Change color when pressed
           border: Border(
+            // Top and left borders reverse when pressed for 3D effect
             top: BorderSide(
-                color: _isPressed
-                    ? const Color(0xFF292C21) // Reverse border color
-                    : const Color(0xFF8C9284),
-                width: widget.borderWidth),
+              color: _isPressed ? const Color(0xFF292C21) : widget.borderColor,
+              width: widget.borderWidth,
+            ),
             left: BorderSide(
-                color: _isPressed
-                    ? const Color(0xFF292C21)
-                    : const Color(0xFF8C9284),
-                width: widget.borderWidth),
+              color: _isPressed ? const Color(0xFF292C21) : widget.borderColor,
+              width: widget.borderWidth,
+            ),
+            // Right and bottom borders reverse when pressed
             right: BorderSide(
-                color: _isPressed
-                    ? const Color(0xFF8C9284) // Reverse opposite side
-                    : const Color(0xFF292C21),
-                width: widget.borderWidth),
+              color: _isPressed ? widget.borderColor : const Color(0xFF292C21),
+              width: widget.borderWidth,
+            ),
             bottom: BorderSide(
-                color: _isPressed
-                    ? const Color(0xFF8C9284)
-                    : const Color(0xFF292C21),
-                width: widget.borderWidth),
+              color: _isPressed ? widget.borderColor : const Color(0xFF292C21),
+              width: widget.borderWidth,
+            ),
           ),
         ),
         padding: widget.padding,
         child: Center(
           child: Text(
-            widget.text.toUpperCase(),
+            widget.text.toUpperCase(), // Convert to uppercase for classic look
             style: TextStyle(
               fontSize: widget.fontSize,
-              fontFamily: widget.fontFamily, // Retro font family
+              fontFamily: widget.fontFamily, // Apply retro font
               color: _isPressed
                   ? widget.pressedTextColor
                   : widget.textColor, // Change text color when pressed

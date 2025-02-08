@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valve_source_engine_theme/valve_source_engine_theme.dart';
+import 'package:flutter_cs16_theme/flutter_cs16_theme.dart';
 
 class CS16Dialog extends StatelessWidget {
   final String title;
