@@ -219,7 +219,7 @@ CS16Button(
 Yes! Just apply `CS16Theme.darkTheme` in your `MaterialApp`.
 
 ### **3. How can I report a bug or suggest a feature?**
-Open an issue on [GitHub](https://github.com/your-repo/flutter_cs16_theme/issues).
+Open an issue on [GitHub](https://github.com/evokelektrique/flutter_cs16_theme/issues).
 
 ---
 
