@@ -90,3 +90,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+    - family: ArialPixel
+      fonts:
+        - asset: assets/fonts/PIXEAB.TTF
+        - asset: assets/fonts/PIXEARG.TTF
