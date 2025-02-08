@@ -36,7 +36,7 @@ dependencies:
     sdk: flutter
   flutter_cs16_theme:
     git:
-      url: https://github.com/your-repo/flutter_cs16_theme.git
+      url: https://github.com/evokelektrique/flutter-cs16-theme.git
 ```
 
 If published on **pub.dev**, use:
