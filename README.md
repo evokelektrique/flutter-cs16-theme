@@ -28,7 +28,7 @@
 ## **📦 Installation**
 
 ### **1. Add Dependency**
-If the package is hosted on **GitHub**, add the following to `pubspec.yaml`:
+Add the following to `pubspec.yaml`:
 
 ```yaml
 dependencies:
