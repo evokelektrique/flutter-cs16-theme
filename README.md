@@ -28,7 +28,7 @@
 ## **📦 Installation**
 
 ### **1. Add Dependency**
-If the package is hosted on **GitHub**, add the following to `pubspec.yaml`:
+Add the following to `pubspec.yaml`:
 
 ```yaml
 dependencies:
@@ -37,13 +37,6 @@ dependencies:
   flutter_cs16_theme:
     git:
       url: https://github.com/evokelektrique/flutter-cs16-theme.git
-```
-
-If published on **pub.dev**, use:
-
-```yaml
-dependencies:
-  flutter_cs16_theme: latest_version
 ```
 
 ### **2. Import the Library**
