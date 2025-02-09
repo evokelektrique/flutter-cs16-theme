@@ -39,13 +39,6 @@ dependencies:
       url: https://github.com/evokelektrique/flutter-cs16-theme.git
 ```
 
-If published on **pub.dev**, use:
-
-```yaml
-dependencies:
-  flutter_cs16_theme: latest_version
-```
-
 ### **2. Import the Library**
 ```dart
 import 'package:flutter_cs16_theme/flutter_cs16_theme.dart';
